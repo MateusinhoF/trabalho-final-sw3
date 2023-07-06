@@ -11,9 +11,6 @@
        
         <x-input nome="password" texto="password" tipo="password"/>
 
-        <x-input nome="email" texto="E-mail" tipo="email"/>
-
-
         Tipo de Usuario
         <select name="tipo_de_usuario" id="tipo_de_usuario" class="form-control">
             @foreach ($tipoDeUsuario as $tipo)
