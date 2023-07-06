@@ -15,61 +15,11 @@ use function PHPUnit\Framework\isNull;
 
 class CompradorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
         $produtos = Produto::all()->where('produto_disponivel','=',true);
         return view('comprador/index',['produtos'=>$produtos]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 
     public function comprar(string $id_produto){
@@ -105,7 +55,7 @@ class CompradorController extends Controller
             $pedido = Pedido::where('user_id','=',$user->id)->orderBy('created_at', 'desc')->first();
 
             if(!is_null($pedido)){
-                //dd($pedido);
+                
                 $codigo_do_pedido = CodigoDoPedido::all()->where('id','=',$pedido->codigo_do_pedido_id)->where('pedido_realizado','=',false)->first();
                 
                 if(is_null($codigo_do_pedido)){
@@ -248,7 +198,7 @@ class CompradorController extends Controller
                                      ->where('pedido.codigo_do_pedido_id','=',$compra->codigo_do_pedido_id)
                                      ->select('pedido.*','produto.nome','produto.descricao','produto.hash_nome_arquivo')
                                      ->get();
-        //dd($produtos);
+        
         return view('comprador.detalhes',['produtos'=>$produtos, 'valor_total'=>$compra->valor_total]);
     }
 

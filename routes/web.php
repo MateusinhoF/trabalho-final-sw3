@@ -37,12 +37,6 @@ Route::middleware(['auth', 'vendedor'])->group(function(){
 
 Route::middleware(['auth', 'comprador'])->group(function(){
     Route::get('/comprador', [CompradorController::class, 'index'])->name('comprador.index');
-    Route::get('/comprador/create', [CompradorController::class, 'create'])->name('comprador.create');
-    Route::post('/comprador', [CompradorController::class, 'store'])->name('comprador.store');
-    Route::get('/comprador/{id}/edit', [CompradorController::class, 'edit'])->name('comprador.edit');
-    Route::post('/comprador/{id}', [CompradorController::class, 'update'])->name('comprador.update');
-    Route::get('/comprador/{id}', [CompradorController::class, 'destroy'])->name('comprador.destroy');
-
     Route::get('/comprador/comprar/{id_produto}', [CompradorController::class, 'comprar'])->name('comprador.comprar');
     Route::get('/comprador/carrinho/listar', [CompradorController::class, 'carrinho'])->name('comprador.carrinho');
     Route::post('/comprador/carrinho/{id_produto}', [CompradorController::class, 'adicionaraocarrinho'])->name('comprador.adicionaraocarrinho');

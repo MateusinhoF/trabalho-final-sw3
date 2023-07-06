@@ -12,9 +12,6 @@ use Illuminate\Support\Facades\Storage;
 
 class VendedorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $user = Auth::user();
@@ -22,18 +19,12 @@ class VendedorController extends Controller
         return view('vendedor/index',['produtos'=>$produtos]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         
         return view('vendedor/cadastrar');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         
@@ -86,17 +77,6 @@ class VendedorController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         try{
@@ -108,9 +88,6 @@ class VendedorController extends Controller
         return view('vendedor/editar',['produto'=>$produto]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         
@@ -206,10 +183,7 @@ class VendedorController extends Controller
         return redirect(route('vendedor.index'));
         
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(string $id)
     {
         try{
