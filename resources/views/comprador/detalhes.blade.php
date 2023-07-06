@@ -1,10 +1,12 @@
 <x-template titulodapagina="Detalhes do Pedido" acessode="Comprador">
 
-    <a href="{{route('comprador.pedidos')}}">Voltar</a>
-    <a href="{{route('logout')}}">Sair</a>
+    <div class="d-flex justify-content-around">
+        <x-link href="{{route('comprador.pedidos')}}" texto="Voltar"/>
+        <x-link href="{{route('logout')}}" texto="Sair"/>
+    </div>
     
     <div>
-        <table>
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Imagem</th>
@@ -42,8 +44,10 @@
         </table>
     </div>
 
-    Valor Total
-    <p>R${{str_replace('.',',',$valor_total)}}</p>
-
+    <div class="d-flex justify-content-center">
+        <p>Valor Total: </p>
+        <p>R${{str_replace('.',',',$valor_total)}}</p>
+    </div>
+    
     <x-errors/>
 </x-template>

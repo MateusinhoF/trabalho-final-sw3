@@ -1,15 +1,15 @@
 <x-template titulodapagina="Login" acessode="Login">
 
-    <a href="{{route('registrese')}}">Registre-se</a>
+    <x-link href="{{route('registrese')}}" texto="Registre-se"/>
 
-    <form action="{{route('logar')}}" method="post">
+    <form action="{{route('logar')}}" method="post" class="p-4 p-md-5 border rouded-3 bg-light form-group mb-3">
         @csrf
-        Email
-        <input type="email" name="email" id="email">
-        Senha
-        <input type="password" name="password" id="password">
+        <x-input nome="email" texto="E-mail" tipo="email"/>
+        
+        <x-input nome="password" texto="Senha" tipo="password"/>
+        
 
-        <input type="submit" value="Entrar">
+        <input type="submit" value="Entrar" class="btn btn-primary">
     </form>
 
     <x-errors/>

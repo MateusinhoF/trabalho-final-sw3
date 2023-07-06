@@ -1,31 +1,35 @@
 <x-template titulodapagina="Registre-se" acessode="Criar Cadastro">
 
-    <a href="{{route('login')}}">Login</a>
+    <x-link  href="{{route('login')}}" texto="Login"/>
 
-    <form action="{{route('store')}}" method="post">
+    <form action="{{route('store')}}" method="post" class="p-4 p-md-5 border rouded-3 bg-light">
         @csrf
-        Nome
-        <input type="text" name="name" id="name">
-        Email
-        <input type="email" name="email" id="email">
-        Senha
-        <input type="password" name="password" id="password">
+
+        <x-input nome="nome" texto="Nome" tipo="text"/>
+
+        <x-input nome="email" texto="E-mail" tipo="email"/>
+       
+        <x-input nome="password" texto="password" tipo="password"/>
+
+        <x-input nome="email" texto="E-mail" tipo="email"/>
+
+
         Tipo de Usuario
-        <select name="tipo_de_usuario" id="tipo_de_usuario">
+        <select name="tipo_de_usuario" id="tipo_de_usuario" class="form-control">
             @foreach ($tipoDeUsuario as $tipo)
                 <option value="{{$tipo->id}}">{{$tipo->tipo}}</option>
             @endforeach
         </select>
-        Cidade
-        <input type="text" name="cidade" id="cidade">
-        Bairro
-        <input type="text" name="bairro" id="bairro">
-        Rua
-        <input type="text" name="rua" id="rua">
-        Numero
-        <input type="text" name="numero" id="numero">
 
-        <input type="submit" value="Cadastrar">
+        <x-input nome="cidade" texto="Cidade" tipo="text"/>
+        
+        <x-input nome="bairro" texto="Bairro" tipo="text"/>
+        
+        <x-input nome="rua" texto="Rua" tipo="text"/>
+        
+        <x-input nome="numero" texto="Numero" tipo="text"/>
+
+        <input type="submit" value="Cadastrar" class="btn btn-primary">
     </form>
 
     <x-errors/>

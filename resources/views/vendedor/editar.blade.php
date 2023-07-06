@@ -1,27 +1,33 @@
 <x-template titulodapagina="Editar Produto" acessode="Vendedor">
 
-    <a href="{{route('vendedor.index')}}">Voltar</a>
-    <a href="{{route('logout')}}">Sair</a>
+    <div class="d-flex justify-content-around">
+        <x-link href="{{route('vendedor.index')}}" texto="Voltar"/>
+        <x-link href="{{route('logout')}}" texto="Sair"/>
+    </div>
 
-    <form action="{{route('vendedor.update',['id'=>$produto->id])}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('vendedor.update',['id'=>$produto->id])}}" method="post" enctype="multipart/form-data" class="p-4 p-md-5 border rouded-3 bg-light">
     
         @csrf
-        Nome
-        <input type="text" name="nome" id="nome" value="{{$produto->nome}}">
-        Descricao
-        <input type="text" name="descricao" id="descricao" value="{{$produto->descricao}}">
-        Valor Unitario
-        <input type="text" name="valor_unitario" id="valor_unitario" value="{{str_replace('.',',',$produto->valor_unitario)}}">
-        Quantidade
-        <input type="text" name="quantidade" id="quantidade" value="{{$produto->quantidade}}">
-        Quantidade vendido
-        <input type="text" name="quantidade_vendido" id="quantidade_vendido" value="{{$produto->quantidade_vendido}}">
-        Imagem atual
-        <img src="{{asset('/img/produtos/'.$produto->hash_nome_arquivo)}}" alt="">
-        Imagem
-        <input type="file" name="imagem" id="imagem">
+        <x-input nome="nome" texto="Nome" tipo="text" valor="{{$produto->nome}}"/>
+        <x-input nome="descricao" texto="Descricao" tipo="text" valor="{{$produto->descricao}}"/>
+        <x-input nome="valor_unitario" texto="Valor Unitario" tipo="text" valor="{{str_replace('.',',',$produto->valor_unitario)}}"/>
+        <x-input nome="quantidade" texto="Quantidade" tipo="text" valor="{{$produto->quantidade}}"/>
+        <x-input nome="quantidade_vendido" texto="Quantidade Vendido" tipo="text" valor="{{$produto->quantidade_vendido}}"/>
+        
+        
+        <div class="form-group mb-3">
+            <label for="imagem">Imagem Atual</label>
+            <img src="{{asset('/img/produtos/'.$produto->hash_nome_arquivo)}}" alt="">
+        </div>
 
-        <input type="submit" value="Alterar Produto">
+        <div class="form-group mb-3">
+            <label for="imagem">Nova Imagem</label>
+            <input type="file" name="imagem" id="imagem">
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <input type="submit" value="Alterar Produto" class="btn btn-primary">
+        </div>
 
     </form>
 

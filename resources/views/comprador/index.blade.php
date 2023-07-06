@@ -1,11 +1,13 @@
 <x-template titulodapagina="Comprador" acessode="Comprador">
 
-    <a href="{{route('comprador.pedidos')}}">Pedidos</a>
-    <a href="{{route('comprador.carrinho')}}">Carrinho</a>
-    <a href="{{route('logout')}}">Sair</a>
+    <div class="d-flex justify-content-around">
+        <x-link href="{{route('comprador.pedidos')}}" texto="Pedidos"/>
+        <x-link href="{{route('comprador.carrinho')}}" texto="Carrinho"/>
+        <x-link href="{{route('logout')}}" texto="Sair"/>
+    </div>
 
     <div>
-        <table>
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Imagem</th>
@@ -17,11 +19,11 @@
             <tbody>
                 @foreach ($produtos as $produto)
                     <tr>
-                        <td>{{$produto->hash_nome_arquivo}}</td>
+                        <td><img src="{{asset('/img/produtos/'.$produto->hash_nome_arquivo)}}" alt="" class="img-thumbnail"></td>
                         <td>{{$produto->nome}}</td>
                         <td>{{str_replace('.',',',$produto->valor_unitario)}}</td>
                         <td>
-                            <a href="{{route('comprador.comprar',['id_produto'=>$produto->id])}}">Comprar</a>
+                            <x-link href="{{route('comprador.comprar',['id_produto'=>$produto->id])}}" texto="Comprar"/>
                         </td>
                     </tr>
                 @endforeach

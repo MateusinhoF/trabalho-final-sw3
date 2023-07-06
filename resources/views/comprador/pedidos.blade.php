@@ -1,10 +1,12 @@
 <x-template titulodapagina="Pedidos realizados" acessode="Comprador">
 
-    <a href="{{route('comprador.index')}}">Voltar</a>
-    <a href="{{route('logout')}}">Sair</a>
+    <div class="d-flex justify-content-around">
+        <x-link href="{{route('comprador.index')}}" texto="Voltar"/>
+        <x-link href="{{route('logout')}}" texto="Sair"/>
+    </div>
   
     <div>
-        <table>
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Codigo do Pedido</th>
@@ -18,7 +20,7 @@
                         <td>{{$pedido->codigo}}</td>
                         <td>{{str_replace('.',',',$pedido->valor_total)}}</td>
                         <td>
-                            <a href="{{route('comprador.detalhespedido', ['id_pedido'=>$pedido->id])}}">Ver itens</a>
+                            <x-link href="{{route('comprador.detalhespedido', ['id_pedido'=>$pedido->id])}}" texto="Ver itens"/>
                         </td>
                     </tr>
                 @endforeach

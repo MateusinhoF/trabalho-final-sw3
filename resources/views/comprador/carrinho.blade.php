@@ -1,10 +1,12 @@
 <x-template titulodapagina="Carrinho" acessode="Comprador">
 
-    <a href="{{route('comprador.index')}}">Voltar</a>
-    <a href="{{route('logout')}}">Sair</a>
-    
+    <div class="d-flex justify-content-around">
+        <x-link href="{{route('comprador.index')}}" texto="Voltar"/>
+        <x-link href="{{route('logout')}}" texto="Sair"/>
+    </div>
+
     <div>
-        <table>
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Imagem</th>
@@ -38,7 +40,7 @@
                         <p>R${{str_replace('.',',',$produto->valor_total)}}</p>
                     </td>
                     <td>
-                        <a href="{{route('comprador.retirarproduto', ['id_pedido'=>$produto->id])}}">Excluir</a>
+                        <x-link href="{{route('comprador.retirarproduto', ['id_pedido'=>$produto->id])}}" texto="Excluir"/>
                     </td>
                 </tr>               
                 @endforeach
@@ -46,10 +48,14 @@
         </table>
     </div>
 
-    Valor Total
-    <p>R${{str_replace('.',',',$valor_total)}}</p>
+    <div class="d-flex justify-content-center">
+        <p>Valor Total: </p>
+        <p>R${{str_replace('.',',',$valor_total)}}</p>
+    </div>
 
+    <div class="d-flex justify-content-center">
+        <x-link href="{{route('comprador.finalizarcompra', ['id_codigo_do_pedido' => $produto->codigo_do_pedido_id])}}" texto="Finalizar compra"/>
+    </div>
 
-    <a href="{{route('comprador.finalizarcompra', ['id_codigo_do_pedido' => $produto->codigo_do_pedido_id])}}">Finalizar compra</a>
     <x-errors/>
 </x-template>
